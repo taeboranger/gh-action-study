@@ -1,0 +1,22 @@
+{
+  "name": "gh-action-study",
+  "version": "1.0.0",
+  "description": "\"# gh-action-study\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taeboranger/gh-action-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taeboranger/gh-action-study/issues"
+  },
+  "homepage": "https://github.com/taeboranger/gh-action-study#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
