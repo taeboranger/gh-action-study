@@ -3,29 +3,28 @@
 
 name: Node.js CI
 
-on:
+on: # Event
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # main으로 푸시가 되었을 때
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ] # main으로 pr이 생겼을 때
 
 jobs:
-  build:
+  build: # 첫 job 이름
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # ubuntu-latest에서 구동
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [14.x, 16.x, 18.x] # Node 버젼 14, 16, 18에서 각각 테스트
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v3 # 레포지토리의 코드를 실행 중인 환경에 내려받는 작업(checkout)을 미리 정의해놓은 Action
+    - name: Use Node.js ${{ matrix.node-version }} # step 이름
+      uses: actions/setup-node@v3 # node 설치 작업 action
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        node-version: ${{ matrix.node-version }} # matrix strategy의 옵션 14, 16, 18 중 현재 테스트 중인 버젼을 명시
+        cache: 'npm' # npm 패키지 설치 과정을 캐싱
+    - run: npm ci # npm ci 명령어 실행
+    - run: npm run build --if-present # npm run build --if-present 명령어 실행
+    - run: npm test # npm test 명령어 실행
